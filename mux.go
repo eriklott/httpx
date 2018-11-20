@@ -163,6 +163,12 @@ func (m *Mux) MethodNotAllowed(handlerFn HandlerFunc) {
 	m.chi.NotFound(adaptor(handlerFn))
 }
 
+// URLParam returns the url parameter from a http.Request object.
+func URLParam(r *http.Request, key string) string {
+	return chi.URLParam(r, key)
+}
+
+// ServeHTTP implements the standard go http.Handler interface.
 func (m *Mux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	m.chi.ServeHTTP(w, r)
 }
